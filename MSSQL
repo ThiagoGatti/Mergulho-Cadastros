@@ -1,0 +1,32 @@
+USE [master]
+GO
+
+CREATE DATABASE [Mergulho]
+
+USE [Mergulho]
+GO
+
+/****** Object:  Table [dbo].[MergulhoDB]    Script Date: 2/25/2024 6:20:48 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MergulhoDB](
+	[Curso] [varchar](50) NULL,
+	[ID_Certificado] [int] IDENTITY(1,1) NOT NULL,
+	[Data_de_Certificacao] [date] NULL,
+	[Codigo_Certificado] [varchar](20) NULL,
+	[Codigo_Certificado_Instrutor] [varchar](20) NULL,
+	[Nome_Instrutor] [varchar](50) NULL,
+	[Escola] [varchar](40) NULL,
+	[Certificadora] [varchar](10) NULL,
+ CONSTRAINT [PK_MergulhoDB] PRIMARY KEY CLUSTERED 
+(
+	[ID_Certificado] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+

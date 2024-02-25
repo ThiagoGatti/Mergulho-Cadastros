@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    color: aliceblue;
+}
+
+body {
+    padding: 0 100px;
+    background: url(/img/Background.jpg);
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box, form
+{
+    position: relative;
+    max-width: 600px;
+    padding: 50px;
+    background: rgba(39, 1, 39, 0.295);
+    box-shadow: 0 5px 15px (rgba(0, 0, 0, .5));
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50;
+    
+}
+
+input {
+    width: 250px;
+    height: 25px;
+    border-radius: 8px;
+    padding: 0 15px 0 15px;
+}
+
+button {
+    width: 150px;
+    height: 25px;
+}

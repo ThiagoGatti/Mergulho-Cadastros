@@ -6,7 +6,8 @@
 h1 {
     margin-top: 60px;
     margin-bottom: 60px;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -18,21 +19,27 @@ body {
     align-items: center;
 }
 
-.box, form
-{
-    position: relative;
+.box {
     max-width: 600px;
-    padding: 50px;
-    background: rgba(39, 1, 39, 0.295);
-    box-shadow: 0 5px 15px (rgba(0, 0, 0, .5));
-    gap: 10px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.842);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 50;
-    
+    border-radius: 20px; 
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.box h1 {
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.box form {
+    width: 100%; 
+
 
 input {
     width: 250px;
@@ -42,6 +49,7 @@ input {
 }
 
 button {
-    width: 150px;
+    width: 283px;
     height: 25px;
+}
 }

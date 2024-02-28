@@ -1,15 +1,26 @@
 const formulario = document.querySelector("form");
 
-const Icurso = document.querySelector(".curso")
-const Idata = document.querySelector(".data")
-const Icod_certificado = document.querySelector(".cod_certificado")
-const Icod_certificado_instrutor = document.querySelector(".cod_certificado_instrutor")
-const Inome_instrutor = document.querySelector(".nome_instrutor")
-const Iescola_certificacao = document.querySelector(".escola_certificacao")
-const Icertificadora = document.querySelector(".certificadora")
+const icurso = document.querySelector(".curso")
+const idata = document.querySelector(".data")
+const icodigo_certificado = document.querySelector(".codigo_certificado")
+const icodigo_certificado_instrutor = document.querySelector(".codigo_certificado_instrutor")
+const inome_instrutor = document.querySelector(".nome_instrutor")
+const iescola_certificacao = document.querySelector(".escola")
+const icertificadora = document.querySelector(".certificadora")
 
 
 function cadastrar () {
+
+  console.log(JSON.stringify({
+    curso: icurso.value,
+            data: idata.value,
+            Codigo_Certificado: icodigo_certificado.value,
+            Codigo_Certificado_Instrutor: icodigo_certificado_instrutor.value,
+            Nome_Instrutor: inome_instrutor.value,
+            Escola: iescola_certificacao.value,
+            certificadora: icertificadora.value
+}))
+
     fetch("http://localhost:8080/mergulho",
     {
         headers: {
@@ -19,13 +30,13 @@ function cadastrar () {
         },
         method: "POST",
         body: JSON.stringify ({
-            curso: Icurso.value,
-            data: Idata.value,
-            cod_certificado: Icod_certificado.value,
-            cod_certificado_instrutor: Icod_certificado_instrutor.value,
-            nome_instrutor: Inome_instrutor.value,
-            escola_certificacao: Iescola_certificacao.value,
-            certificadora: Icertificadora.value
+            curso: icurso.value,
+            data: idata.value,
+            codigo_Certificado: icodigo_certificado.value,
+            codigo_Certificado_Instrutor: icodigo_certificado_instrutor.value,
+            nome_Instrutor: inome_instrutor.value,
+            escola: iescola_certificacao.value,
+            certificadora: icertificadora.value
         })
     })
     .then(function (res) {console.log(res)})
@@ -34,13 +45,13 @@ function cadastrar () {
 };
 
 function limpar () {
-            Icurso.value = "";
-            Idata.value = "";
-            Icod_certificado.value = "";
-            Icod_certificado_instrutor.value = "";
-            Inome_instrutor.value  = "";
-            Iescola_certificacao.value  = "";
-            Icertificadora.value  = "";
+            icurso.value = "";
+            idata.value = "";
+            icodigo_certificado.value = "";
+            icodigo_certificado_instrutor.value = "";
+            inome_instrutor.value  = "";
+            iescola_certificacao.value  = "";
+            icertificadora.value  = "";
 
 };
 

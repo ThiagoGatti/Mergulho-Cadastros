@@ -16,14 +16,6 @@ public class Mergulhos {
     @Column(name = "ID_Certificado")
     private Integer id;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     @Column(name = "Curso", length = 200, nullable = false)
     String Curso;
     @Column(name = "Data_de_Certificacao")
@@ -38,29 +30,6 @@ public class Mergulhos {
     String Escola;
     @Column(name = "Certificadora")
     String Certificadora;
-
-    public void executarInsercao(Connection connection) {
-        try {
-            String sql = "INSERT INTO MergulhoDB (Curso, Data_de_Certificacao, Codigo_Certificado, Codigo_Certificado_Instrutor, Nome_Instrutor, Escola, Certificadora) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, Curso);
-            statement.setString(2, Data);
-            statement.setString(3, Codigo_Certificado);
-            statement.setString(4, Codigo_Certificado_Instrutor);
-            statement.setString(5, Nome_Instrutor);
-            statement.setString(6, Escola);
-            statement.setString(7, Certificadora);
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("Dados inseridos na tabela 'Mergulho' com sucesso.");
-            } else {
-                System.out.println("Falha ao inserir os dados na tabela 'Mergulho'.");
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro ao inserir os dados: " + e.getMessage());
-        }
-    }
 
     public String getCurso() {
         return Curso;
@@ -116,5 +85,27 @@ public class Mergulhos {
 
     public void setCertificadora(String certificadora) {
         Certificadora = certificadora;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Mergulhos{" +
+                "id=" + id +
+                ", Curso='" + Curso + '\'' +
+                ", Data='" + Data + '\'' +
+                ", Codigo_Certificado='" + Codigo_Certificado + '\'' +
+                ", Codigo_Certificado_Instrutor='" + Codigo_Certificado_Instrutor + '\'' +
+                ", Nome_Instrutor='" + Nome_Instrutor + '\'' +
+                ", Escola='" + Escola + '\'' +
+                ", Certificadora='" + Certificadora + '\'' +
+                '}';
     }
 }

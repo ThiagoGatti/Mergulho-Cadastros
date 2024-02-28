@@ -3,6 +3,8 @@ package com.mergulho.cadastro.MergulhoCadastro.controller;
 import com.mergulho.cadastro.MergulhoCadastro.DAO.IMergulho;
 import com.mergulho.cadastro.MergulhoCadastro.model.Mergulhos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,22 +24,38 @@ public class Controller {
     }
 
     @PostMapping
-    public Mergulhos criarMergulho(@RequestBody Mergulhos mergulhos) {
-        Mergulhos mergulhosNovo = dao.save(mergulhos);
-        return mergulhosNovo;
-
+    public ResponseEntity<?> criarMergulho(@RequestBody Mergulhos mergulhos) {
+        try {
+            Mergulhos mergulhosNovo = dao.save(mergulhos);
+            System.out.println(mergulhos);
+            return new ResponseEntity<>(mergulhosNovo, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Erro ao criar o mergulho: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping
-    public Mergulhos editarMergulho(@RequestBody Mergulhos mergulhos) {
-        Mergulhos mergulhosNovo = dao.save(mergulhos);
-        return mergulhosNovo;
+    public ResponseEntity<?> editarMergulho(@RequestBody Mergulhos mergulhos) {
+        try {
+            Mergulhos mergulhosNovo = dao.save(mergulhos);
+            return new ResponseEntity<>(mergulhosNovo, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Erro ao editar o mergulho: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-    @DeleteMapping("/{id}")
-    public Optional<Mergulhos> excluirMergulho(@PathVariable Integer id) {
-        Optional<Mergulhos> mergulhos = dao.findById(id);
-        dao.deleteById(id);
-        return mergulhos;
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> excluirMergulho(@PathVariable Integer id) {
+        try {
+            Optional<Mergulhos> mergulhos = dao.findById(id);
+            if (mergulhos.isPresent()) {
+                dao.deleteById(id);
+                return new ResponseEntity<>(mergulhos, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Mergulho não encontrado", HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>("Erro ao excluir o mergulho: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
